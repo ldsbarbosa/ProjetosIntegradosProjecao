@@ -1,0 +1,28 @@
+<div class="formularioDeLogin">
+  <form [formGroup]="formularioLogin" (ngSubmit)="logarComEmailSenha()">
+    <div class="form-group">
+        <mat-label for="email" class="labelDeLogin">Email</mat-label>
+        <input class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+        cdkFocusInitial id="email" formControlName="email" required placeholder="Informe seu email" aria-label="Informe seu email."
+          type="text" aria-hidden="true"/>
+    </div>
+    <div class="form-group">
+        <mat-label for="senha" class="labelDeLogin">Senha</mat-label>
+        <input type="password" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+         id="senha" formControlName="senha" required password placeholder="Informe sua senha" aria-label="Informe sua senha" aria-hidden="true"/>
+    </div>
+    <div class="login__rodape">
+      <button color="primary" type="submit" mat-raised-button id="button-entrar">
+        <mat-icon>check</mat-icon>
+        <span>Entrar</span>
+      </button>
+    </div>
+  </form>
+  <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="logoff()" routerLink="/">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Sair</span>
+  </button>
+</div>
+<div class="alert retornoDeTentativaDeLogin" [class]="respostaDaRequisicao == 'Algum erro ocorreu. Tente novamente ou espere até mais tarde.' ? 'alert-danger' : 'alert-warning'" role="alert" *ngIf="respostaDaRequisicao != ''">
+  {{ respostaDaRequisicao }}
+</div>

@@ -1,0 +1,57 @@
+.texto_manter_computador {
+    color: white;
+    width: 50%;
+    margin: 50px;
+}
+
+.ul_manter_computador {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.ul_manter_computador > li {
+    flex-direction: row;
+}
+
+.opcoesDeExclusao .opcoesDeIDComputador {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.layout_manter_computador{
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
+.tituloDaPagina{
+    display: flex;
+}
+.botaoDeDuvida{
+    border: 0px;
+    background-color: #1e1e1e;
+    color: yellow;
+    transition: 2s;
+}
+.botaoDeDuvida:hover{
+    transition: 1s;
+    background-color: #aaaaaa;
+    color: blue;
+}
+.tabelaListarComputador{
+    margin: 5px auto;
+}
+.celulasTabelaListarComputadores{
+    padding: 10px;
+    margin: 10px;
+    background-color: #2b2b2b;
+    color: #d8d8d8;
+}
+.checkboxCompatibilidade {
+    padding: 10px;
+}

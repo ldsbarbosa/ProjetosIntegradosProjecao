@@ -1,0 +1,127 @@
+<div class="texto_manter_pergunta">
+  <ul class="ul_manter_pergunta">
+    <li><button class="btn btn-primary" *ngFor="let botaoCRUD of botaoCRUDVetor" (click)="opcaoCRUD(botaoCRUD.operacao)">{{ botaoCRUD.operacao }}<mat-icon>{{ botaoCRUD.icone }}</mat-icon></button></li>
+  </ul>
+  <div [ngSwitch]="botaoNGSWITCH" class="layout_manter_pergunta">
+    <div *ngSwitchCase="botaoCRUDVetor[0].operacao">
+      <div class="container">
+        <div class="tituloDaPagina"><h4>Listar Pergunta</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Listar Pergunta')"><mat-icon>question_mark</mat-icon></button></div>
+        <table mat-table [dataSource]="dataSource" class="table tabelaListarPergunta">
+          <!-- Coluna de ID da Pergunta -->
+          <ng-container matColumnDef="ID da Pergunta">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> ID da Pergunta </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.id}} </td>
+          </ng-container>
+          <!-- Coluna de ID da Prova -->
+          <ng-container matColumnDef="ID da Prova">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> ID da Prova </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.prova_id}} </td>
+          </ng-container>
+          <!-- Coluna de Nome da Prova -->
+          <ng-container matColumnDef="Nome da Prova">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Nome da Prova </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.prova.nome}} </td>
+          </ng-container>
+          <!-- Coluna de ID da Disciplina -->
+          <ng-container matColumnDef="ID da Disciplina">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> ID da Disciplina </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.disciplina_id}} </td>
+          </ng-container>
+          <!-- Coluna de Nome da Disciplina -->
+          <ng-container matColumnDef="Nome da Disciplina">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Nome da Disciplina </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.disciplina.nome}} </td>
+          </ng-container>
+          <!-- Coluna de Enunciado -->
+          <ng-container matColumnDef="Enunciado">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Enunciado </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.enunciado}} </td>
+          </ng-container>
+          <!-- Coluna de Tipo de Pergunta -->
+          <ng-container matColumnDef="Tipo de Pergunta">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Tipo de Pergunta </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarPerguntas"> {{elemento.tipo_pergunta}} </td>
+          </ng-container>
+          <!-- Coluna de Resposta -->
+          <ng-container matColumnDef="Resposta">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Resposta </th>
+            <td mat-cell *matCellDef="let elemento; index as indice;" class="celulasTabelaListarPerguntas"> {{
+              (elemento.tipo_pergunta == 'Verdadeiro ou Falso') ? 
+                ((elemento.resposta == 1) ? 'Verdadeiro' : 'Falso') :
+                  (elemento.resposta == '10000') ? '1 Item - Resposta: '+elemento.opcoes[0].nome_opcao :
+                  (elemento.resposta == '01000') ? '2 Item - Resposta: '+elemento.opcoes[1].nome_opcao :
+                  (elemento.resposta == '00100') ? '3 Item - Resposta: '+elemento.opcoes[2].nome_opcao :
+                  (elemento.resposta == '00010') ? '4 Item - Resposta: '+elemento.opcoes[3].nome_opcao :
+                  (elemento.resposta == '00001') ? '5 Item - Resposta: '+elemento.opcoes[4].nome_opcao : ''
+            }} </td>
+          </ng-container>
+          <!-- Coluna de Editar -->
+          <ng-container matColumnDef="Editar">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Editar</th>
+            <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarPerguntas">
+              <button class="btn btn-primary" (click)="abrirDialogEditarPergunta(i)"><mat-icon>update</mat-icon>Atualizar Pergunta {{elemento.id}}</button>
+            </td>
+          </ng-container>
+          <!-- Coluna de Excluir -->
+          <ng-container matColumnDef="Excluir">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarPerguntas"> Excluir </th>
+            <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarPerguntas">
+              <button class="btn btn-primary" (click)="abrirDialogExcluirPergunta(i)"><mat-icon>delete</mat-icon>Deletar Pergunta {{elemento.id}}</button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="colunasDisponiveis"></tr>
+          <tr mat-row *matRowDef="let row; columns: colunasDisponiveis;"></tr>
+        </table>
+        <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Selecione a página">
+        </mat-paginator>
+      </div>
+    </div>
+    <div *ngSwitchCase="botaoCRUDVetor[1].operacao">
+      <div class="tituloDaPagina"><h4>Criar Pergunta</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Criar Pergunta')"><mat-icon>question_mark</mat-icon></button></div>
+      <div>
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+      </div>
+      <form [formGroup]="formularioCriarPergunta" (ngSubmit)="criarPergunta()">
+        <div class="mb-3">
+          <label for="prova_id" class="form-label">Identificador da Prova</label>
+          <input type="number" class="form-control" id="prova_id" name="prova_id" formControlName="prova_id" required>
+        </div>
+        <div class="mb-3">
+          <label for="disciplina_id" class="form-label">Identificador da Disciplina</label>
+          <input type="number" class="form-control" id="disciplina_id" name="disciplina_id" formControlName="disciplina_id" required>
+        </div>
+        <div class="mb-3">
+          <label for="enunciado" class="form-label">Enunciado</label>
+          <input type="text" class="form-control" id="enunciado" name="enunciado" formControlName="enunciado" required>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill">
+            <label for="tipo_pergunta" class="form-label">Tipo da Pergunta</label>
+            <mat-select (valueChange)="aposEscolherTipoDeResposta($event)" class="form-control" id="tipo_pergunta" name="tipo_pergunta" formControlName="tipo_pergunta" required>
+              <mat-option *ngFor="let tipoDePergunta of tiposDePergunta" [value]="tipoDePergunta.value">
+                {{ tipoDePergunta.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>    
+        </div>
+        <div class="mb-3">
+          <label for="resposta" class="form-label">Resposta</label>
+          <input maxlength="5" type="text" class="form-control" id="resposta" name="resposta" formControlName="resposta" required>
+        </div>
+        <div *ngIf="tipoDeRespostaEscolhido == 'Múltipla Escolha'">
+          <div formArrayName="nome_opcao" *ngFor="let opcao of getNomeOpcaoControls(); index as i" class="mb-3">
+            <label class="form-label">Nome da {{i+1}}º opção de ID {{i}}: </label>
+            <input type="text" class="form-control" required formControlName="{{i}}">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="botaoDesabilitadoCriarPergunta"><mat-icon>add_circle</mat-icon>Criar pergunta</button>
+      </form>
+    </div>
+  </div>
+</div>

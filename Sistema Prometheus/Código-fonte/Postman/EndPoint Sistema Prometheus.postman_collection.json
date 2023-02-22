@@ -1,0 +1,752 @@
+{
+	"info": {
+		"_postman_id": "db26563c-de7e-4a06-8bd4-7b836d9ca23d",
+		"name": "EndPoint Sistema Prometheus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21714896"
+	},
+	"item": [
+		{
+			"name": "Realizar Cadastro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "Usuário de Teste4",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "adm13582",
+							"type": "text"
+						},
+						{
+							"key": "data_de_nascimento",
+							"value": "1990-10-21",
+							"type": "text"
+						},
+						{
+							"key": "apelido",
+							"value": "Apelido de Teste4",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "usuario_de_teste4@teste_athena.com",
+							"type": "text"
+						},
+						{
+							"key": "CPF",
+							"value": "410.734.450-97",
+							"type": "text"
+						},
+						{
+							"key": "cidade",
+							"value": "Ceilandia",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuario",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "usuario_de_teste4@teste_athena.com",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "adm13579",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Computador - Manter Comp.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/computador?atributos=id,gabinete_id,fonte_de_energia_id,armazenamento_id,placa_mae_id,processador_id,preco_montagem,compatibilidade&atributos_gabinete=nome&atributos_placa_mae=nome&atributos_processador=nome&atributos_fonte_de_energia=nome&atributos_armazenamento=nome&atributos_memorias_RAM=nome&filtro_usuario=usuario_id:=:1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"computador"
+					],
+					"query": [
+						{
+							"key": "atributos",
+							"value": "id,gabinete_id,fonte_de_energia_id,armazenamento_id,placa_mae_id,processador_id,preco_montagem,compatibilidade"
+						},
+						{
+							"key": "atributos_gabinete",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_placa_mae",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_processador",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_fonte_de_energia",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_armazenamento",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_memorias_RAM",
+							"value": "nome"
+						},
+						{
+							"key": "filtro_usuario",
+							"value": "usuario_id:=:1",
+							"description": "Usar usuário ou de ID 1 ou ID 2"
+						},
+						{
+							"key": "atributos_usuarios",
+							"value": "nome",
+							"disabled": true
+						},
+						{
+							"key": "filtro",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Computador  - Manter Comp.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usuario_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "gabinete_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "fonte_de_energia_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "armazenamento_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "placa_mae_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "processador_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "preco_montagem",
+							"value": "400.00",
+							"type": "text"
+						},
+						{
+							"key": "compatibilidade",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "memoria_ram_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "qtd_memoria_ram",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/computador",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"computador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT  Computador  - Manter Comp.",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "gabinete_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "fonte_de_energia_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "armazenamento_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "placa_mae_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "processador_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "preco_montagem",
+							"value": "80.00",
+							"type": "text"
+						},
+						{
+							"key": "compatibilidade",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "memoria_ram_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "qtd_memoria_ram",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/computador/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"computador",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH  Computador  - Manter Comp.",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "gabinete_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fonte_de_energia_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "armazenamento_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "placa_mae_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "processador_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "preco_montagem",
+							"value": "80.00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "compatibilidade",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "memoria_ram_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "qtd_memoria_ram",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/computador/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"computador",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE  Computador  - Manter Comp.",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/computador/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"computador",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Processador - Manter Processador",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/processador?atributos=id,nome,marca,qtd_nucleos,qtd_threads,preco",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"processador"
+					],
+					"query": [
+						{
+							"key": "atributos",
+							"value": "id,nome,marca,qtd_nucleos,qtd_threads,preco"
+						},
+						{
+							"key": "filtro",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Processador - Manter Processador",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "ProcessadorTeste",
+							"type": "text"
+						},
+						{
+							"key": "marca",
+							"value": "MarcaTeste",
+							"type": "text"
+						},
+						{
+							"key": "qtd_threads",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "qtd_nucleos",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "preco",
+							"value": "599.9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/processador",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"processador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT  Processador - Manter Processador",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "ProcessadorTeste2",
+							"type": "text"
+						},
+						{
+							"key": "marca",
+							"value": "MarcaTeste2",
+							"type": "text"
+						},
+						{
+							"key": "qtd_threads",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "qtd_nucleos",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "preco",
+							"value": "299.9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/processador/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"processador",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH  Processador - Manter Processador",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "ProcessadorTeste",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "marca",
+							"value": "MarcaTeste",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "qtd_threads",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "qtd_nucleos",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "preco",
+							"value": "999.9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/processador/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"processador",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE  Processador - Manter Processador",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/processador/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"processador",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

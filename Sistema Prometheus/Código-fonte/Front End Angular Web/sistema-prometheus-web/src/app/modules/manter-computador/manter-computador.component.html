@@ -1,0 +1,278 @@
+<div class="texto_manter_computador">
+    <ul class="ul_manter_computador">
+      <li><button class="btn btn-warning" *ngFor="let botaoCRUD of botaoCRUDVetor" (click)="opcaoCRUD(botaoCRUD.operacao)">{{ botaoCRUD.operacao }}<mat-icon>{{ botaoCRUD.icone }}</mat-icon></button></li>
+    </ul>
+    <div [ngSwitch]="botaoNGSWITCH" class="layout_manter_computador">
+      <div *ngSwitchCase="botaoCRUDVetor[0].operacao">
+        <div class="container">
+          <div class="tituloDaPagina"><h4>Listar Computador</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Listar Computador')"><mat-icon>question_mark</mat-icon></button></div>
+          <table mat-table [dataSource]="dataSourceListarComputador" class="table tabelaListarComputador">
+            <!-- Coluna de ID do Computador -->
+            <ng-container matColumnDef="ID do Computador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Computador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.id}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Gabinete -->
+            <ng-container matColumnDef="ID do Gabinete">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Gabinete </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.gabinete_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Gabinete -->
+            <ng-container matColumnDef="Nome do Gabinete">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Gabinete </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.gabinete.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Fonte de Energia -->
+            <ng-container matColumnDef="ID da Fonte de Energia">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Fonte de Energia </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.fonte_de_energia_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Fonte de Energia -->
+            <ng-container matColumnDef="Nome da Fonte de Energia">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Fonte de Energia </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.fonte_de_energia.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID do Armazenamento -->
+            <ng-container matColumnDef="ID do Armazenamento">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Armazenamento </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.armazenamento_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Armazenamento -->
+            <ng-container matColumnDef="Nome do Armazenamento">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Armazenamento </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.armazenamento.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Placa Mãe -->
+            <ng-container matColumnDef="ID da Placa Mãe">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Placa Mãe </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.placa_mae_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Placa Mãe -->
+            <ng-container matColumnDef="Nome da Placa Mãe">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Placa Mãe </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.placa_mae.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID do Processador -->
+            <ng-container matColumnDef="ID do Processador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Processador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.processador_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Processador -->
+            <ng-container matColumnDef="Nome do Processador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Processador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.processador.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Memória RAM -->
+            <ng-container matColumnDef="ID da Memória RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Memória RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.memorias_ram[0].id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Memória RAM -->
+            <ng-container matColumnDef="Nome da Memória RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Memória RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.memorias_ram[0].nome}} </td>
+            </ng-container>
+            <!-- Coluna de Quantidade de Memória(s) RAM -->
+            <ng-container matColumnDef="Quantidade de Memória(s) RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Quantidade de Memória(s) RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{(elemento.qtd_pentes_no_computador.length == 1 ? "1 pente" : elemento.qtd_pentes_no_computador.length + " pentes")}} </td>
+            </ng-container>
+            <!-- Coluna de Preço de Montagem -->
+            <ng-container matColumnDef="Preço de Montagem">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Preço de Montagem </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.preco_montagem}} </td>
+            </ng-container>
+            <!-- Coluna de Compatibilidade entre Peças -->
+            <ng-container matColumnDef="Compatibilidade entre Peças">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Compatibilidade entre Peças </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{ (elemento.compatibilidade == 1) ? "Compatível" : "Incompatível" }} </td>
+            </ng-container>
+            <!-- Coluna de Editar -->
+            <ng-container matColumnDef="Editar">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Editar</th>
+              <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarComputadores">
+                <button class="btn btn-warning" (click)="abrirDialogEditarComputador(i)"><mat-icon>update</mat-icon>Atualizar Computador {{elemento.id}}</button>
+              </td>
+            </ng-container>
+            <!-- Coluna de Excluir -->
+            <ng-container matColumnDef="Excluir">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Excluir </th>
+              <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarComputadores">
+                <button class="btn btn-warning" (click)="abrirDialogExcluirComputador(i)"><mat-icon>delete</mat-icon>Deletar Computador {{elemento.id}}</button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="colunasDisponiveis"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunasDisponiveis;"></tr>
+          </table>
+          <mat-paginator [length]="100"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Selecione a página"
+                  #MatPaginatorListarComputador>
+          </mat-paginator>
+        </div>
+      </div>
+      <div *ngSwitchCase="botaoCRUDVetor[1].operacao">
+        <div class="tituloDaPagina"><h4>Criar Computador</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Criar Computador')"><mat-icon>question_mark</mat-icon></button></div>
+        <div>
+          <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+              <mat-icon>sync_alt</mat-icon>
+              <span>Atualizar a página</span>
+          </button>
+        </div>
+        <form [formGroup]="formularioCriarComputador" (ngSubmit)="criarComputador()">
+          <div class="mb-3">
+            <label for="gabinete_id" class="form-label">Identificador do Gabinete</label>
+            <input type="number" class="form-control" id="gabinete_id" name="gabinete_id" formControlName="gabinete_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="fonte_de_energia_id" class="form-label">Identificador da Fonte de Energia</label>
+            <input type="number" class="form-control" id="fonte_de_energia_id" name="fonte_de_energia_id" formControlName="fonte_de_energia_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="armazenamento_id" class="form-label">Identificador do Armazenamento</label>
+            <input type="number" class="form-control" id="armazenamento_id" name="armazenamento_id" formControlName="armazenamento_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="placa_mae_id" class="form-label">Identificador da Placa-Mãe</label>
+            <input type="number" class="form-control" id="placa_mae_id" name="placa_mae_id" formControlName="placa_mae_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="processador_id" class="form-label">Identificador do Processador</label>
+            <input type="number" class="form-control" id="processador_id" name="processador_id" formControlName="processador_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="memoria_ram_id" class="form-label">Identificador da Memória RAM</label>
+            <input type="number" class="form-control" id="memoria_ram_id" name="memoria_ram_id" formControlName="memoria_ram_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="qtd_memoria_ram" class="form-label">Quantidade de Memória RAM</label>
+            <input type="number" class="form-control" id="qtd_memoria_ram" name="qtd_memoria_ram" formControlName="qtd_memoria_ram" required>
+          </div>
+          <div class="mb-3">
+            <label for="preco_montagem" class="form-label">Preço para Montagem das peças</label>
+            <input type="number" class="form-control" id="preco_montagem" name="preco_montagem" formControlName="preco_montagem" required>
+          </div>
+          <div class="mb-3">
+            <label for="compatibilidade" class="form-label">Compatibilidade</label>
+            <input type="checkbox" id="compatibilidade" name="compatibilidade" formControlName="compatibilidade" required>
+          </div>
+          <button class="btn btn-warning checkboxCompatibilidade" type="submit" [disabled]="botaoDesabilitadoCriarComputador"><mat-icon>add_circle</mat-icon>Criar Computador</button>
+        </form>
+      </div>
+      <div *ngSwitchCase="botaoCRUDVetor[2].operacao">
+        <div class="container">
+          <div class="tituloDaPagina">
+            <h4>Associar Computador</h4>
+            <button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Associar Computador')"><mat-icon>question_mark</mat-icon></button>
+          </div>
+          <div>
+            <div>
+              <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPaginaDeAssociacao">
+                  <mat-icon>sync_alt</mat-icon>
+                  <span>Atualizar a página</span>
+              </button>
+            </div>
+          </div>
+          <table mat-table [dataSource]="dataSourceAssociarComputador" class="table tabelaListarComputador">
+            <!-- Coluna de ID do Computador -->
+            <ng-container matColumnDef="ID do Computador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Computador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.id}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Gabinete -->
+            <ng-container matColumnDef="ID do Gabinete">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Gabinete </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.gabinete_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Gabinete -->
+            <ng-container matColumnDef="Nome do Gabinete">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Gabinete </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.gabinete.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Fonte de Energia -->
+            <ng-container matColumnDef="ID da Fonte de Energia">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Fonte de Energia </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.fonte_de_energia_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Fonte de Energia -->
+            <ng-container matColumnDef="Nome da Fonte de Energia">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Fonte de Energia </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.fonte_de_energia.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID do Armazenamento -->
+            <ng-container matColumnDef="ID do Armazenamento">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Armazenamento </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.armazenamento_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Armazenamento -->
+            <ng-container matColumnDef="Nome do Armazenamento">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Armazenamento </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.armazenamento.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Placa Mãe -->
+            <ng-container matColumnDef="ID da Placa Mãe">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Placa Mãe </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.placa_mae_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Placa Mãe -->
+            <ng-container matColumnDef="Nome da Placa Mãe">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Placa Mãe </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.placa_mae.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID do Processador -->
+            <ng-container matColumnDef="ID do Processador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID do Processador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.processador_id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome do Processador -->
+            <ng-container matColumnDef="Nome do Processador">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome do Processador </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.processador.nome}} </td>
+            </ng-container>
+            <!-- Coluna de ID da Memória RAM -->
+            <ng-container matColumnDef="ID da Memória RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> ID da Memória RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.memorias_ram[0].id}} </td>
+            </ng-container>
+            <!-- Coluna de Nome da Memória RAM -->
+            <ng-container matColumnDef="Nome da Memória RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Nome da Memória RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.memorias_ram[0].nome}} </td>
+            </ng-container>
+            <!-- Coluna de Quantidade de Memória(s) RAM -->
+            <ng-container matColumnDef="Quantidade de Memória(s) RAM">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Quantidade de Memória(s) RAM </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.memorias_ram.length}} pentes </td>
+            </ng-container>
+            <!-- Coluna de Preço de Montagem -->
+            <ng-container matColumnDef="Preço de Montagem">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Preço de Montagem </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{elemento.preco_montagem}} </td>
+            </ng-container>
+            <!-- Coluna de Compatibilidade entre Peças -->
+            <ng-container matColumnDef="Compatibilidade entre Peças">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Compatibilidade entre Peças </th>
+              <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarComputadores"> {{ (elemento.compatibilidade == 1) ? "Compatível" : "Incompatível" }} </td>
+            </ng-container>
+            <!-- Coluna de Associar -->
+            <ng-container matColumnDef="Associar">
+              <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarComputadores"> Associar </th>
+              <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarComputadores">
+                <button class="btn btn-warning" (click)="associarComputador(elemento.id)"
+                [disabled]="botaoDesabilitadoAssociarComputador"><mat-icon>update</mat-icon>Associar Computador {{elemento.id}}</button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="colunasDisponiveisAssociar"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunasDisponiveisAssociar;"></tr>
+          </table>
+          <mat-paginator [length]="100"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Selecione a página"
+                  #MatPaginatorAssociarComputador>
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,64 @@
+<h2 class="titulo">Orientações - Listar Pergunta</h2>
+<h2 class="titulo">Operações</h2>
+<div class="dicasDeResposta">
+    <h3>Listagem de todas as perguntas</h3>
+    <p>Ao acessar a rota <code>/manter-pergunta</code> ou clicar no botão <code>"Listar Pergunta"</code>, o usuário será redirecionado para uma tabela
+        listando todas as perguntas disponíveis no sistema.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Atualização completa de uma pergunta</h3>
+    <p>Uma vez escolhendo a pergunta desejada e clicando no botão <code>"Atualizar Pergunta N"</code>, será exibido um modal
+        que possibilitará a atualização completa daquela pergunta se nenhum campo for <code>desabilitado</code>.</p>
+    <p>No caso de perguntas de múltipla escolha, o nome das opções não podem conter dois traços seguidos <code>"--"</code>, pois isso causará inconsistência na requisição.</p>
+    <p>Não é permitida a alteração de tipo de pergunta.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Atualização parcial de uma pergunta</h3>
+    <p>Uma vez escolhendo a pergunta desejada e clicando no botão <code>"Atualizar Pergunta N"</code>, será exibido um modal
+        que possibilitará a atualização parcial daquela pergunta caso algum campo seja <code>desabilitado</code> pelo
+        usuário por meio de deschecagem do respectivo checkbox.</p>
+    <p>No caso de perguntas de múltipla escolha, o nome das opções não podem conter dois traços seguidos <code>"--"</code>, pois isso causará inconsistência na requisição.</p>
+    <p>Não é permitida a alteração de tipo de pergunta.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Exclusão de uma pergunta</h3>
+    <p>Uma vez escolhendo a pergunta desejada e clicando no botão <code>"Deletar Pergunta N"</code>, será exibido um modal
+        que possibilitará a exclsuão daquela pergunta.</p>
+</div>
+<h2 class="titulo">Campos</h2>
+<div class="dicasDeResposta">
+    <h3>ID da Pergunta</h3>
+    <p>Cada pergunta possui um número identificador único associado à ela. É importante o conhecimento deste número para que as
+        operações de atualização e exclusão sejam realizadas.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>ID da Prova - Nome da Prova</h3>
+    <p>Cada prova possui tanto um nome quanto um número identificador único associado à ela.
+        É importante o conhecimento deste número para que as operações de atualização e exclusão sejam realizadas, ja que
+        uma certa pergunta está contida em uma prova.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>ID da Disciplina - Nome da Disciplina</h3>
+    <p>Cada prova possui tanto um nome quanto um número identificador único associado à ela.
+        É importante o conhecimento deste número para que as operações de atualização e exclusão sejam realizadas, ja que
+        uma certa pergunta pertence à Uma disciplina.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Enunciado</h3>
+    <p>Toda a pergunta possui um enunciado, que será responsável pelo questionamento feito à pessoa que deve responder.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Tipo de Pergunta</h3>
+    <p>Há dois tipos: Verdadeiro ou Falso; Múltipla Escolha.
+        O tipo "Verdadeiro ou Falso" admite somente duas respostas(Verdadeiro ou Falso) e o tipo "Múltipla Escolha" admite
+        cinco respostas, que são correspondentes ao enunciado. Das cinco, somente uma é verdadeira.
+    </p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Resposta</h3>
+    <p>Se o tipo da pergunta for "Verdadeiro ou Falso", então a resposta deve conter somente um caracter (1 para verdadeiro ou 0 para falso).</p>
+    <p>Já se for "Múltipla Escolha", então a resposta deve conter cinco caracteres, sendo 0 os caracteres correspondentes às alternativas falsas
+       e 1 correspondente à alternativa verdadeira.</p>
+    <p> Exemplo: 00100, a terceira alternativa é a verdadeira.</p>
+</div>
+<button class="btn btn-primary" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

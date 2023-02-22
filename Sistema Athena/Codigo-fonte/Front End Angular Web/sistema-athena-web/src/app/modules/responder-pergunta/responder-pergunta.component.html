@@ -1,0 +1,44 @@
+<div class="container-fluid espacoDaPergunta">
+    <div class="botaoTratadoNoCSS">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="gerarPergunta()" [disabled]="botaoDesabilitadoGerarPergunta">
+            <mat-icon>grade</mat-icon>
+            <span>Gerar pergunta aleatória</span>
+        </button>
+    </div>
+    <section *ngIf="perguntaNaTela" class="perguntaAleatoria">
+        <form [formGroup]="formularioResponderPergunta" (ngSubmit)="responderPergunta()">
+            <div class="enunciado">
+                <p>
+                    {{perguntaAleatoria.enunciado}}
+                </p>
+            </div>
+            <div class="form-group">
+                <mat-label for="resposta">Resposta</mat-label>
+                <mat-radio-group aria-label="Selecione uma opção" id="resposta" name="resposta" formControlName="resposta" required
+                placeholder="Resposta à pergunta" aria-label="Informe sua senha">
+                    <div *ngIf="perguntaAleatoria.tipo_pergunta == 'Verdadeiro ou Falso'">
+                        <mat-radio-button value="0">Falso</mat-radio-button>
+                        <mat-radio-button value="1">Verdadeiro</mat-radio-button>
+                    </div>
+                    <div *ngIf="perguntaAleatoria.tipo_pergunta == 'Múltipla Escolha'">
+                        <div *ngFor="let opcao of opcoes;index as i"> 
+                            <mat-radio-button [value]="i+1">{{opcao.nome_opcao}}</mat-radio-button>
+                        </div>
+                    </div>
+                </mat-radio-group>
+            </div>
+            <div class="botaoTratadoNoCSS">
+                <button color="primary" type="submit" mat-raised-button id="button-entrar" [disabled]="botaoDesabilitadoResponderPergunta">
+                    <mat-icon>send</mat-icon>
+                    <span>Enviar Resposta</span>
+                </button>
+            </div>
+        </form>
+    </section>
+    <div class="botaoTratadoNoCSS">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+    </div>
+</div>

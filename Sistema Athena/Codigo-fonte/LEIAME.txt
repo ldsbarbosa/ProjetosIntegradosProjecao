@@ -1,0 +1,76 @@
+1.DIRETÓRIOS:
+Esta é a estrutura de pastas destinadas ao desenvolvimento do Sistema ATHENA, que é um Quiz de perguntas de TI.
+
+1.1. BackEnd Laravel API
+Framework: Laravel, versão 8.83.23
+Linguagem de Back-end: PHP, versão 7.0
+Arquitetura: Model-View-Controller
+Informações relevantes:
+As operações de criação de tabelas e inserção de dados são feitas com comandos iniciados com
+"php artisan".
+Essas operações utilizarão os arquivos do diretório /database dentro da pasta que guarda todo o projeto
+relativo ao back-end.
+Uma vez executada as operações de banco de dados, as models, controllers e outros arquivos necessários já se encontrarão
+configurados.
+A partir daí, resta servir a aplicação com "php artisan serve".
+É altamente recomendável o uso da IDE "Visual Studio Code" para todas as operações relacionadas ao Laravel.
+
+1.2. Bando de Dados
+SGBD: MySQL, versão
+GUI do SGBD: MySQL Workbench, versão 8.0.21
+Linguagem p/ query: SQL
+Informações relevantes:
+Nesta pasta, haverá as modelagens e script de seleção de dados (SELECT .... FROM <tabela>).
+A utilidade desses scripts está em servirem de debug para caso de erros e consulta para os casos de CRUD (Create, Read,
+Update, Delete).
+
+1.3. Front End Web
+Linguagem de marcação de hipertexto: HTML
+Linguagem de estilização: CSS
+Linguagem de script para aplicar comportamento: JavaScript/TypeScript
+Framework de desenvolvimento: Angular
+Informações relevantes:
+Para servir a aplicação Angular, deve ser aberto ela no editor de texto "Visual Studio Code" e abrir um terminal integrado.
+Neste terminal integrado, deve ser digitado "ng serve -o".
+
+1.4. Imagens
+Diretório de imagens de uso livre ou imagens manipuladas via GIMP.
+
+1.5. Postman
+Aqui consta o arquivo .json que pode ser importado no Postman para testar e debugar a API, uma vez a aplicação Laravel
+servida.
+
+1.6. Provas
+Aqui constam todas as provas usadas para alimentar o banco de dados.
+
+2.FONTES UTILIZADAS:
+
+2.1. Wikipédia - Dados sobre alguns tópicos, descrição de disciplinas.
+2.2. Unsplash - Imagens de livre uso
+2.3. Pixabay - Imagens de livre uso
+2.4. QConcursos - Site de questões de concurso utilizado para extrair provas.
+
+3. CÓDIGO-FONTE E SCRIPT DO BANCO
+
+3.1 Código-Fonte
+Para executar a aplicação por completo, o computador deve ter instalado o MySQL, o Angular e o Laravel. Abaixo, seguem
+as instruções para instalar cada um:
+MySQL: https://www.youtube.com/watch?v=DKMrVxtJyUk
+Angular: https://www.youtube.com/watch?v=1pad3p8VOu4
+Laravel: https://www.youtube.com/watch?v=4OxYHiEkqBg
+Uma vez que a aplicação Laravel esteja instalada, rodar, no CMD, os seguintes comandos:
+	composer config -g repo.packagist composer https://packagist.org
+	composer config -g github-protocols https ssh
+
+Uma vez que o banco de dados já esteja criado, modelado com suas tabelas e populado com os registros necessários,
+pode-se servir a aplicação back-end com "php artisan serve" e, sequencialmente, servir a aplicação front-end com
+"ng serve -o".
+
+3.2 Script do Banco
+Os scripts relacionados ao banco de dados são divididos em duas partes: 1. Os scripts .php que executam DDL's(migration)
+e DML's(seeder) e 2. os scripts .sql que servem para dar o comando "SELECT" e "DESCRIBE" nas tabelas para conferir
+o estado delas.
+Para executar a aplicação, deve ser executadas primeiro as migrations(php artisan migrate),
+depois as seeders(php artisan db:seed).
+Antes de utilizar esses comandos, deve ser conferido se já foi criado uma instância de banco de dados que condiz com os arquivos
+no .conf do projeto Laravel.

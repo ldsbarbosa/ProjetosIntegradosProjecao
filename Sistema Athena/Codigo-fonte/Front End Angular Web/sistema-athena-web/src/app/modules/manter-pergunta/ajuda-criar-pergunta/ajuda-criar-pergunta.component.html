@@ -1,0 +1,44 @@
+<h2 class="titulo">Orientações - Criar Pergunta</h2>
+<h2 class="titulo">Operações</h2>
+<div class="dicasDeResposta">
+    <h3>Criar uma pergunta</h3>
+    <p>Com acesso aos campos, o usuário pode preencher os campos e gerar uma pergunta.</p>
+    <p>No caso de perguntas de múltipla escolha, o nome das opções não podem conter dois traços seguidos <code>"--"</code>, pois isso causará inconsistência na requisição.</p>
+</div>
+<h2 class="titulo">Campos</h2>
+<div class="dicasDeResposta">
+    <h3>ID da Pergunta</h3>
+    <p>Cada pergunta possui um número identificador único associado à ela. É importante o conhecimento deste número para que as
+        operações de atualização e exclusão sejam realizadas.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>ID da Prova - Nome da Prova</h3>
+    <p>Cada prova possui tanto um nome quanto um número identificador único associado à ela.
+        É importante o conhecimento deste número para que as operações de atualização e exclusão sejam realizadas, ja que
+        uma certa pergunta está contida em uma prova. O usuário deve escolher uma prova já cadastrada no sistema.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>ID da Disciplina - Nome da Disciplina</h3>
+    <p>Cada prova possui tanto um nome quanto um número identificador único associado à ela.
+        É importante o conhecimento deste número para que as operações de atualização e exclusão sejam realizadas, ja que
+        uma certa pergunta pertence à Uma disciplina.. O usuário deve escolher uma disciplina já cadastrada no sistema.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Enunciado</h3>
+    <p>Toda a pergunta possui um enunciado, que será responsável pelo questionamento feito à pessoa que deve responder.</p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Tipo de Pergunta</h3>
+    <p>Há somente dois tipos: Verdadeiro ou Falso; Múltipla Escolha.
+        O tipo "Verdadeiro ou Falso" admite somente duas respostas(Verdadeiro ou Falso) e o tipo "Múltipla Escolha" admite
+        cinco respostas, que são correspondentes ao enunciado. Das cinco, somente uma é verdadeira.
+    </p>
+</div>
+<div class="dicasDeResposta">
+    <h3>Resposta</h3>
+    <p>Se o tipo da pergunta for "Verdadeiro ou Falso", então a resposta deve conter somente um caracter (1 para verdadeiro ou 0 para falso).</p>
+    <p>Já se for "Múltipla Escolha", então a resposta deve conter cinco caracteres, sendo 0 os caracteres correspondentes às alternativas falsas
+       e 1 correspondente à alternativa verdadeira.</p>
+    <p> Exemplo de respota de pergunta de múltipla escolha: 00100. A terceira alternativa é a verdadeira, as outras são falsas.</p>
+</div>
+<button class="btn btn-primary" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

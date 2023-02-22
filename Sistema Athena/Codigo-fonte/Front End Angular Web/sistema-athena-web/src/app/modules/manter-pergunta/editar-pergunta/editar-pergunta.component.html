@@ -1,0 +1,79 @@
+<div class="corFundoDialogo">
+<h4>Preferências de alteração</h4>
+<form [formGroup]="formularioPreferenciaAtualizacoes">
+    <section class="grupoDeCheckboxes">
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="prova_id" name="prova_id" formControlName="prova_id">Identificador da Prova</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="disciplina_id" name="disciplina_id" formControlName="disciplina_id">Identificador da Disciplina</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="enunciado" name="enunciado" formControlName="enunciado">Enunciado</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="resposta" name="resposta" formControlName="resposta">Resposta</mat-checkbox>
+        <mat-checkbox *ngIf="tipoDeRespostaEscolhido == 'Múltipla Escolha'" (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="nome_opcao" name="nome_opcao" formControlName="nome_opcao">Nome das Opções</mat-checkbox>
+      </section>
+</form>
+<h4>Atualizar Pergunta</h4>
+    <button class="btn btn-primary" (click)="limparCampos()">Limpar campos</button>
+    <form [formGroup]="formularioAtualizarPergunta" (ngSubmit)="submeterAlteracoesDePergunta()">
+    <div class="mb-3">
+        <label for="id" class="form-label">Identificador da Pergunta</label>
+        <mat-select class="form-control" id="id" name="id" formControlName="id" required [disabled]="true">
+            <mat-option class="form-control opcoesDeIDPergunta" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.id" [disabled]="true">
+                {{ registro.id }} | {{ registro.enunciado.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="prova_id" class="form-label">Identificador da Prova</label>
+        <mat-select class="form-control" id="prova_id" name="prova_id" formControlName="prova_id" required>
+            <mat-option class="form-control opcoesDeIDPergunta" *ngFor="let registro of colecaoDeProvasTratado;" [value]="registro.id">
+                {{ registro.id }} | {{ registro.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="disciplina_id" class="form-label">Identificador da Disciplina</label>
+        <mat-select class="form-control" id="disciplina_id" name="disciplina_id" formControlName="disciplina_id" required>
+            <mat-option class="form-control opcoesDeIDPergunta" *ngFor="let registro of colecaoDeDisciplinasTratado;" [value]="registro.id">
+                {{ registro.id }} | {{ registro.nome }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="enunciado" class="form-label">Enunciado</label>
+        <input type="text" class="form-control" id="enunciado" name="enunciado" formControlName="enunciado" required>
+    </div>
+    <div class="mb-3 form-check">
+        <mat-form-field appearance="fill">
+        <label for="tipo_pergunta" class="form-label">Tipo da Pergunta</label>
+        <mat-select (valueChange)="aposEscolherTipoDeResposta($event)" class="form-control" id="tipo_pergunta" name="tipo_pergunta" formControlName="tipo_pergunta" required>
+            <mat-option *ngFor="let tipoDePergunta of tiposDePergunta" [value]=" tipoDePergunta.value">
+            {{ tipoDePergunta.value}}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>    
+    </div>
+    <div class="mb-3 form-check">
+        <label for="resposta" class="form-label">Resposta</label>
+        <input maxlength="5" type="text" class="form-control" id="resposta" name="resposta" formControlName="resposta" required>
+    </div>
+    <div *ngIf="tipoDeRespostaEscolhido == 'Múltipla Escolha'">
+        <div formArrayName="nome_opcao" *ngFor="let opcao of getNomeOpcaoControls(); index as i" class="mb-3">
+            <label class="form-label">Nome da {{i+1}}º opção: </label>
+            <input type="text" class="form-control" required formControlName="{{i}}">
+        </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="botaoDesabilitadoEditarPergunta">Submeter atualizações</button>
+    </form>
+    <div class="botaoTratadoNoCSS">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+    </div>
+    <div class="dicasDeResposta">
+        <p>Se o tipo da pergunta for "Verdadeiro ou Falso", então a resposta deve conter somente um caracter (1 para verdadeiro ou 0 para falso).</p>
+        <p>Já se for "Múltipla Escolha", então a resposta deve conter cinco caracteres, sendo 0 os caracteres correspondentes às alternativas falsas
+           e 1 correspondente à alternativa verdadeira.</p>
+        <p> Exemplo: 00100, a terceira alternativa é a verdadeira.</p>
+    </div>
+</div>
+
+<button class="btn btn-primary" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

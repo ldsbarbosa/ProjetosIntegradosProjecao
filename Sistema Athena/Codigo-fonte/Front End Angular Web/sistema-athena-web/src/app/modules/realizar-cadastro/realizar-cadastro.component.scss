@@ -1,0 +1,84 @@
+$custom-color: #3844FF;
+$custom-color-second: #330CB8;
+$custom-color-black: #111112;
+
+.topo {
+  top: 0;
+  width: 100%;
+
+  &__barra {
+    background: $custom-color;
+    height: .7rem;
+    display: flex;
+    color: $custom-color;
+    justify-content: center;
+  }
+
+  &__logo {
+    align-items: center;
+    border-bottom: none;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400;
+    color: $custom-color;
+    padding: 0;
+    text-decoration: none;
+  }
+
+  &__sistema {
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    &__sigla {
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.mat-toolbar {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  border-bottom: 3px solid $custom-color-second;
+}
+
+.mat-divider {
+  height: 1.5rem;
+  margin: 0 5px 0 5px;
+}
+
+.botao-login {
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0 0.6rem 0 1rem;
+}
+
+.formularioCadastro {
+  background-color: #111112;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.retornoDeTentativaDeLogin {
+  margin: 0 auto;
+  width: 40%;
+  text-align: center;
+}
+
+.inputAutenticadoNoSistema{
+  background-color: #cfe2ff;
+}
+
+.inputAutenticadoNoSistema::placeholder {
+  color: #084298;
+  text-align: center;
+}
+
+.labelDeCadastro{
+  color: white;
+}

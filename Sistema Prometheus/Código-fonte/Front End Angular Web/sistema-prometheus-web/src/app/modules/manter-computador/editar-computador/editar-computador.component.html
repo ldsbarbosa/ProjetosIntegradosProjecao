@@ -1,0 +1,97 @@
+<div class="corFundoDialogo">
+<h4>Preferências de alteração</h4>
+<form [formGroup]="formularioPreferenciaAtualizacoes">
+    <section class="grupoDeCheckboxes">
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="gabinete_id" name="gabinete_id" formControlName="gabinete_id">Identificador do Gabinete</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="fonte_de_energia_id" name="fonte_de_energia_id" formControlName="fonte_de_energia_id">Identificador da Fonte de Energia</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="armazenamento_id" name="armazenamento_id" formControlName="armazenamento_id">Identificador do Armazenamento</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="placa_mae_id" name="placa_mae_id" formControlName="placa_mae_id">Identificador da Placa Mãe</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="processador_id" name="processador_id" formControlName="processador_id">Identificador do Processador</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="preco_montagem" name="preco_montagem" formControlName="preco_montagem">Preço de Montagem</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="compatibilidade" name="compatibilidade" formControlName="compatibilidade">Compatibilidade</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="memoria_ram_id" name="memoria_ram_id" formControlName="memoria_ram_id">Identificador da Memória RAM</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="qtd_memoria_ram" name="qtd_memoria_ram" formControlName="qtd_memoria_ram">Quantidade de Memória(s) RAM</mat-checkbox>
+    </section>
+</form>
+<h4>Atualizar Computador</h4>
+    <button class="btn btn-warning" (click)="limparCampos()">Limpar campos</button>
+    <form [formGroup]="formularioAtualizarComputador" (ngSubmit)="submeterAlteracoesDeComputador()">
+    <div class="mb-3">
+        <label for="id" class="form-label">Identificador do Computador</label>
+        <mat-select class="form-control" id="id" name="id" formControlName="id" required [disabled]="true">
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.id" [disabled]="true">
+                {{ registro.id }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="prova_id" class="form-label">Identificador do Gabinete</label>
+        <mat-select class="form-control" id="gabinete_id" name="gabinete_id" formControlName="gabinete_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.gabinete_id">
+                {{ registro.gabinete_id }} | {{ registro.gabinete.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="fonte_de_energia_id" class="form-label">Identificador da Fonte de Energia</label>
+        <mat-select class="form-control" id="fonte_de_energia_id" name="fonte_de_energia_id" formControlName="fonte_de_energia_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.fonte_de_energia_id">
+                {{ registro.fonte_de_energia_id }} | {{ registro.fonte_de_energia.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="armazenamento_id" class="form-label">Identificador do Armazenamento</label>
+        <mat-select class="form-control" id="armazenamento_id" name="armazenamento_id" formControlName="armazenamento_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.armazenamento_id">
+                {{ registro.armazenamento_id }} | {{ registro.armazenamento.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="placa_mae_id" class="form-label">Identificador da Placa Mãe</label>
+        <mat-select class="form-control" id="placa_mae_id" name="placa_mae_id" formControlName="placa_mae_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.placa_mae_id">
+                {{ registro.placa_mae_id }} | {{ registro.placa_mae.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="processador_id" class="form-label">Identificador do Processador</label>
+        <mat-select class="form-control" id="processador_id" name="processador_id" formControlName="processador_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog;" [value]="registro.processador_id">
+                {{ registro.processador_id }} | {{ registro.processador.nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3">
+        <label for="memoria_ram_id" class="form-label">Identificador da Memória RAM</label>
+        <mat-select class="form-control" id="memoria_ram_id" name="memoria_ram_id" formControlName="memoria_ram_id" required>
+            <mat-option class="form-control opcoesDoComputador" *ngFor="let registro of dadosNecessariosParaDialog; let i = index" [value]="registro.memorias_ram[0].id">
+                {{ registro.memorias_ram[0].id }} | {{ registro.memorias_ram[0].nome.slice(0,25) }}...
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="qtd_memoria_ram" class="form-label">Quantidade de Memórias RAM</label>
+        <input type="number" class="form-control" id="qtd_memoria_ram" name="qtd_memoria_ram" formControlName="qtd_memoria_ram" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="preco_montagem" class="form-label">Preço da Montagem</label>
+        <input type="number" class="form-control" id="preco_montagem" name="preco_montagem" formControlName="preco_montagem" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="compatibilidade" class="form-label">Compatibilidade</label>
+        <input type="checkbox" id="compatibilidade" name="compatibilidade" formControlName="compatibilidade" required>
+    </div>
+    <button class="btn btn-primary" [disabled]="botaoDesabilitadoEditarComputador">Submeter atualizações</button>
+    </form>
+    <div class="botaoTratadoNoCSS">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+    </div>
+</div>
+
+<button class="btn btn-warning" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

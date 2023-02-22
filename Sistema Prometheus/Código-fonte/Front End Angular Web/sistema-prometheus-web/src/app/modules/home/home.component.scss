@@ -1,0 +1,72 @@
+$custom-color: #3844FF;
+.titulo {
+    &__h1{
+        color: white;
+        text-align: center;
+        text-shadow: 1px 1px black;
+    }
+    &__h3{
+        color: white;
+        text-shadow: 1px 1px black;
+    }
+    &__h3_2{
+        color: white;
+        background-color: #d3b300;
+        border-radius: 10px;
+        text-shadow: 1px 1px black;
+    }
+    &__p{
+        color: white;
+        text-shadow: 1px 1px black;
+    }
+    &__usuarioAutenticado{
+        color: white;
+        text-align: center;
+        margin: 0 auto;
+        background-color: black;
+        width: 20%;
+    }
+}
+
+.carrosel {
+    display: block;
+    width: 500px;
+    height: 750px;
+    margin: auto;
+}
+
+.slide {
+    width: 500px;
+    height: 750px;
+    margin: auto;
+    &__img{
+        display: block;
+    }
+}
+
+.slideImg {
+    width: 500px;
+    height: 750px;
+    margin: auto;
+    display: block;
+}
+
+.descricao-accordion{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.fonte-accordion{
+    text-decoration: none;
+    font-style: italic;
+}
+.cardMaterial {
+    width: 30%;
+    background-color: white;
+    margin: 40px;
+}
+.grupoDeCards {
+    display: flex;
+    margin: 0 auto;
+    padding: auto;
+}

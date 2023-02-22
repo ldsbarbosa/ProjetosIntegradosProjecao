@@ -1,0 +1,4 @@
+https://valor-software.com/ngx-bootstrap/#/
+https://getbootstrap.com/
+https://material.angular.io/
+https://htmlcolorcodes.com/ -- Cores em Hexadecimal e RGB

@@ -1,0 +1,54 @@
+.texto_manter_processador {
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.ul_manter_processador {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.ul_manter_processador > li {
+    flex-direction: row;
+}
+
+.opcoesDeExclusao .opcoesDeIDProcessador {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.layout_manter_processador{
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
+.tituloDaPagina{
+    display: flex;
+}
+.botaoDeDuvida{
+    border: 0px;
+    background-color: #1e1e1e;
+    color: yellow;
+    transition: 2s;
+}
+.botaoDeDuvida:hover{
+    transition: 1s;
+    background-color: #aaaaaa;
+    color: blue;
+}
+.tabelaListarProcessador{
+    margin: 5px auto;
+}
+.celulasTabelaListarProcessadores{
+    padding: 10px;
+    margin: 10px;
+    background-color: #2b2b2b;
+    color: #d8d8d8;
+}

@@ -1,0 +1,56 @@
+<div class="formularioCadastro">
+    <form [formGroup]="formularioCadastro" (ngSubmit)="cadastrarNovoUsuario()">
+      <div class="form-group">
+          <mat-label for="nome" class="labelDeCadastro">Nome</mat-label>
+          <input matInput type="text" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            cdkFocusInitial id="nome" formControlName="nome" required placeholder="Informe seu nome" aria-label="Informe seu nome."
+            aria-hidden="true" maxlength="40"/>
+      </div>
+      <div class="form-group">
+          <mat-label for="senha" class="labelDeCadastro">Senha</mat-label>
+          <input matInput type="password" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            id="senha" formControlName="senha" required password placeholder="Informe sua senha" aria-label="Informe sua senha"
+            aria-hidden="true" maxlength="40"/>
+      </div>
+      <div class="form-group">
+          <mat-label for="data_de_nascimento" class="labelDeCadastro">Data de Nascimento</mat-label>
+          <input matInput type="date" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            id="data_de_nascimento" formControlName="data_de_nascimento" required placeholder="Informe sua data de nascimento"
+            aria-label="Informe sua data de nascimento" aria-hidden="true"/>
+      </div>
+      <div class="form-group">
+          <mat-label for="apelido" class="labelDeCadastro">Apelido</mat-label>
+          <input matInput type="text" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            id="apelido" formControlName="apelido" required placeholder="Informe seu apelido" aria-label="Informe seu apelido"
+            aria-hidden="true" maxlength="40"/>
+      </div>
+      <div class="form-group">
+          <mat-label for="email" class="labelDeCadastro">Email</mat-label>
+          <input matInput type="email" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            cdkFocusInitial id="email" formControlName="email" required placeholder="Informe seu email" aria-label="Informe seu email."
+            aria-hidden="true"  maxlength="40"/>
+      </div>
+      <div class="form-group">
+          <mat-label for="CPF" class="labelDeCadastro">CPF</mat-label>
+          <input matInput type="text" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            cdkFocusInitial id="CPF" formControlName="CPF" required placeholder="Informe seu CPF" aria-label="Informe seu CPF."
+            aria-hidden="true" maxlength="14" />
+      </div>
+      <div class="form-group">
+          <mat-label for="cidade" class="labelDeCadastro">Cidade</mat-label>
+          <input matInput type="text" class="form-control" [class]="autenticadoNoSistema == true ? 'inputAutenticadoNoSistema' : ''"
+            cdkFocusInitial id="cidade" formControlName="cidade" required placeholder="Informe sua cidade" aria-label="Informe sua cidade."
+            aria-hidden="true"/>
+      </div>
+      
+      <div class="login__rodape">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar">
+          <span>CADASTRAR</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div class="alert retornoDeTentativaDeLogin" role="alert" *ngIf="respostaDaRequisicao != ''" [class]="requisicaoBemSucedida ? 'alert-success' : 'alert-dark' ">
+    {{ respostaDaRequisicao }}
+  </div>

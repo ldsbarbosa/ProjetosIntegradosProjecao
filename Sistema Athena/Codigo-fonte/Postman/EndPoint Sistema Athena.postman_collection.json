@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "9b65238e-9962-4c98-885a-7a86e1a4bba0",
+		"name": "EndPoint Sistema Athena",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21714896"
+	},
+	"item": [
+		{
+			"name": "Realizar Cadastro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "Usuário de Teste4",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "adm13582",
+							"type": "text"
+						},
+						{
+							"key": "data_de_nascimento",
+							"value": "1990-10-21",
+							"type": "text"
+						},
+						{
+							"key": "apelido",
+							"value": "Apelido de Teste4",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "usuario_de_teste4@teste_athena.com",
+							"type": "text"
+						},
+						{
+							"key": "CPF",
+							"value": "410.734.450-97",
+							"type": "text"
+						},
+						{
+							"key": "cidade",
+							"value": "Ceilandia",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuario",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "usuario_de_teste@teste_athena.com",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "adm13579",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Responder Pergunta - Gerar pergunta aleatória",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tentativa?responder_pergunta",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tentativa"
+					],
+					"query": [
+						{
+							"key": "responder_pergunta",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Responder Pergunta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usuario_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "pergunta_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "resposta",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tentativa",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tentativa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Pergunta - Mant. Perg.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pergunta?atributos=id,prova_id,disciplina_id,enunciado,tipo_pergunta,resposta,tipo_pergunta&atributos_disciplina=nome&atributos_prova=nome&atributos_opcoes=pergunta_id,nome_opcao",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pergunta"
+					],
+					"query": [
+						{
+							"key": "atributos",
+							"value": "id,prova_id,disciplina_id,enunciado,tipo_pergunta,resposta,tipo_pergunta"
+						},
+						{
+							"key": "atributos_disciplina",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_prova",
+							"value": "nome"
+						},
+						{
+							"key": "atributos_opcoes",
+							"value": "pergunta_id,nome_opcao"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Pergunta  - Mant. Perg.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "prova_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "disciplina_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "enunciado",
+							"value": "Enunciado de Teste Lucas",
+							"type": "text"
+						},
+						{
+							"key": "tipo_pergunta",
+							"value": "Verdadeiro ou Falso",
+							"type": "text"
+						},
+						{
+							"key": "resposta",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nome_opcao",
+							"value": "Opcao 1--Opcao 2--Opcao 3--Opcao 4--Opcao 5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pergunta",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pergunta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Pergunta  - Mant. Perg.",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "prova_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "disciplina_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "enunciado",
+							"value": "Enunciado segue nulo (PUT)",
+							"type": "text"
+						},
+						{
+							"key": "tipo_pergunta",
+							"value": "Múltipla Escolha",
+							"type": "text"
+						},
+						{
+							"key": "resposta",
+							"value": "00001",
+							"type": "text"
+						},
+						{
+							"key": "nome_opcao",
+							"value": "Opcao 1PUT--Opcao 2PUT--Opcao 3PUT--Opcao 4PUT--Opcao 5PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pergunta/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pergunta",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Pergunta  - Mant. Perg.",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "prova_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "disciplina_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "enunciado",
+							"value": "Enunciado sem conteúdo (PATCH)",
+							"type": "text"
+						},
+						{
+							"key": "tipo_pergunta",
+							"value": "Múltipla Escolha",
+							"type": "text"
+						},
+						{
+							"key": "resposta",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "nome_opcao",
+							"value": "Opcao 1PATCH--Opcao 2PATCH--Opcao 3PATCH--Opcao 4PATCH--Opcao 5PATCH",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pergunta/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pergunta",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pergunta  - Mant. Perg.",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pergunta/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pergunta",
+						"14"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,17 @@
+<div class="corFundoDialogo">
+    <h4>Excluir Processador</h4>
+    <form [formGroup]="formularioDeletarProcessador" (ngSubmit)="deletarProcessadorDELETE()">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Processador</label>
+            <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" required>
+        </div>
+    <button class="btn btn-warning" type="submit" [disabled]="botaoDesabilitadoExcluirProcessador">Deletar</button>
+    </form>
+</div>
+<div class="botaoTratadoNoCSS">
+    <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+        <mat-icon>sync_alt</mat-icon>
+        <span>Atualizar a página</span>
+    </button>
+</div>
+<button class="btn btn-warning" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

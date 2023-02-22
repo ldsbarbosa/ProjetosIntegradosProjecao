@@ -1,0 +1,47 @@
+<h1 class="titulo__h1">SISTEMA ATHENA</h1>
+
+<carousel class="carrosel">
+  <slide class="slide">
+    <img src="assets/images/athena1.jpg" alt="Primeiro Slide" class="slideImg">
+    <div class="carousel-caption d-none d-md-block">
+      <h3 class="titulo__h3">Aprenda Tecnologia</h3>
+      <p class="titulo__p">Como nunca aprendeu antes</p>
+    </div>
+  </slide>
+  <slide class="slide">
+    <img src="assets/images/athena2.jpg" alt="Segundo Slide" class="slideImg">
+    <div class="carousel-caption d-none d-md-block">
+      <h3 class="titulo__h3">Aprenda Tecnologia</h3>
+      <p class="titulo__p">Com inovação</p>
+    </div>
+  </slide>
+  <slide class="slide">
+    <img src="assets/images/athena1_1.jpg" alt="Terceiro Slide" class="slideImg">
+    <div class="carousel-caption d-none d-md-block">
+      <h3 class="titulo__h3">Aprenda Tecnologia</h3>
+      <p class="titulo__p">De forma prática e acessível</p>
+    </div>
+  </slide>
+</carousel>
+<p class="titulo__usuarioAutenticado" *ngIf="emailLogado != ''"> Usuário logado: {{ emailLogado }}</p>
+<div class="grupoDeCards">
+  <mat-card class="cardMaterial">
+    <mat-card-title><h3 class="titulo__h3_2">A importância dos profissionais de TI para as empresas</h3></mat-card-title>
+    <p class="descricao-accordion">"Atualmente, a Tecnologia da Informação está quase que onipresente na vida das pessoas, sobretudo de quem mora na cidade e convive em ambientes organizacionais/empresariais.
+      Como isso é possível? A TI está muito além de ser apenas os 'computadores e seus sistemas'. A Tecnologia da Informação é o alicerce do funcionamento de todo negócio.
+      Todo reflexo externo que vemos é consequente de uma estrutura de TI por trás, possibilitando que as coisas aconteçam."</p>
+    <a class="fonte-accordion" href="https://bugbusters.com.br/2017/12/21/importancia-profissionais-de-ti/">Fonte</a>
+  </mat-card>
+  <mat-card class="cardMaterial">
+    <mat-card-title><h3 class="titulo__h3_2">Capacitação é chave para evolução do profissional de TI</h3></mat-card-title>
+    <p class="descricao-accordion">"Vivemos em uma era de ruptura digital, em que as empresas de tecnologia da informação e da comunicação estão transformando todos os setores da sociedade, pressionadas pelo desafio de apresentar ao mercado soluções cada vez melhores, no menor tempo possível. Responsável por empregar mais de 1,6 milhões de brasileiros, o setor deve movimentar R$ 600 bilhões no País até 2021, segundo levantamento da Brasscom.
+      Diante dessa perspectiva positiva, novas oportunidades de trabalho são abertas todos os dias. E muitas delas exigem conhecimentos, certificações ou habilidades específicas. Naturalmente, a vantagem competitiva será daquele profissional de TI capaz de se manter atualizado em sua área de atuação, sempre atento aos movimentos, lançamentos, avanços e mudanças do setor."</p>
+    <a class="fonte-accordion" href="https://www.wareline.com.br/carreiras/capacitacao-para-evolucao-do-profissional-de-ti/">Fonte</a>
+  </mat-card>
+  <mat-card class="cardMaterial">
+    <mat-card-title><h3 class="titulo__h3_2">Apesar dos altos salários, há carência de profissionais de TI no Brasil</h3></mat-card-title>
+    <p class="descricao-accordion">"O mercado do Brasil deve enfrentar uma lacuna significativa nos próximos anos: a falta de profissionais de TI (tecnologia da informação). Uma estimativa da empresa de consultoria empresarial McKinsey aponta que serão 1 milhão de profissionais a menos do que vagas abertas em 2030.
+      A tendência é que o número de pessoas qualificadas nesta área não acompanhe uma demanda que só cresce. No final de 2021 o setor tinha 159 mil vagas em aberto, mas só 53 mil formados para ocupá-las, segundo dados da Brasscom (Associação das Empresas de Tecnologia da Informação e Comunicação). "</p>
+    <a class="fonte-accordion" href="https://gizmodo.uol.com.br/apesar-dos-altos-salarios-ha-carencia-de-profissionais-de-ti-no-brasil/">Fonte</a>
+  </mat-card>
+</div>

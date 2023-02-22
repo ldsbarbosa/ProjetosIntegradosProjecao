@@ -1,0 +1,45 @@
+<div class="corFundoDialogo">
+<h4>Preferências de alteração</h4>
+<form [formGroup]="formularioPreferenciaAtualizacoes">
+    <section class="grupoDeCheckboxes">
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="nome" name="nome" formControlName="nome">Nome do Processador</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="marca" name="marca" formControlName="marca">Marca do Processador</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="qtd_nucleos" name="qtd_nucleos" formControlName="qtd_nucleos">Quantidade de núcleos</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="qtd_threads" name="qtd_threads" formControlName="qtd_threads">Quantidade de threads</mat-checkbox>
+        <mat-checkbox (change)="alterarPreferenciasDeAtualizacao($event)" class="preferencias" id="preco" name="preco" formControlName="preco">Preco do Processador</mat-checkbox>
+      </section>
+</form>
+<h4>Atualizar Processador</h4>
+    <button class="btn btn-warning" (click)="limparCampos()">Limpar campos</button>
+    <form [formGroup]="formularioAtualizarProcessador" (ngSubmit)="submeterAlteracoesDeProcessador()">
+    <div class="mb-3 form-check">
+        <label for="nome" class="form-label">Nome do Processador</label>
+        <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="marca" class="form-label">Marca do Processador</label>
+        <input type="text" class="form-control" id="marca" name="marca" formControlName="marca" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="qtd_nucleos" class="form-label">Quantidade de núcleos do Processador</label>
+        <input type="text" class="form-control" id="qtd_nucleos" name="qtd_nucleos" formControlName="qtd_nucleos" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="qtd_threads" class="form-label">Quantidade de threads do Processador</label>
+        <input type="text" class="form-control" id="qtd_threads" name="qtd_threads" formControlName="qtd_threads" required>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="preco" class="form-label">Preço do Processador</label>
+        <input type="text" class="form-control" id="preco" name="preco" formControlName="preco" required>
+    </div>
+    <button class="btn btn-primary" [disabled]="botaoDesabilitadoEditarProcessador">Submeter atualizações</button>
+    </form>
+    <div class="botaoTratadoNoCSS">
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+    </div>
+</div>
+
+<button class="btn btn-warning" (click)="voltarATelaInicial()">Voltar à tela inicial</button>

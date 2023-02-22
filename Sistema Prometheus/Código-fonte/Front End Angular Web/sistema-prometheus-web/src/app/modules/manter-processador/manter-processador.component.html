@@ -1,0 +1,97 @@
+<div class="texto_manter_processador">
+  <ul class="ul_manter_processador">
+    <li><button class="btn btn-warning" *ngFor="let botaoCRUD of botaoCRUDVetor" (click)="opcaoCRUD(botaoCRUD.operacao)">{{ botaoCRUD.operacao }}<mat-icon>{{ botaoCRUD.icone }}</mat-icon></button></li>
+  </ul>
+  <div [ngSwitch]="botaoNGSWITCH" class="layout_manter_processador">
+    <div *ngSwitchCase="botaoCRUDVetor[0].operacao">
+      <div class="container">
+        <div class="tituloDaPagina"><h4>Listar Processador</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Listar Processador')"><mat-icon>question_mark</mat-icon></button></div>
+        <table mat-table [dataSource]="dataSource" class="table tabelaListarProcessador">
+          <!-- Coluna de ID do Processador -->
+          <ng-container matColumnDef="Identificador">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Identificador  </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.id}} </td>
+          </ng-container>
+          <!-- Coluna de Nome do Processador -->
+          <ng-container matColumnDef="Nome">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Nome </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.nome}} </td>
+          </ng-container>
+          <!-- Coluna de Marca do Processador -->
+          <ng-container matColumnDef="Marca">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Marca </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.marca}} </td>
+          </ng-container>
+          <!-- Coluna de Quantidade de núcleos -->
+          <ng-container matColumnDef="Quantidade de núcleos">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Quantidade de núcleos </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.qtd_nucleos}} </td>
+          </ng-container>
+          <!-- Coluna de Quantidade de threads -->
+          <ng-container matColumnDef="Quantidade de threads">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Quantidade de threads </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.qtd_threads}} </td>
+          </ng-container>
+          <!-- Coluna de Preco do Processador -->
+          <ng-container matColumnDef="Preco">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Preco </th>
+            <td mat-cell *matCellDef="let elemento" class="celulasTabelaListarProcessadores"> {{elemento.preco}} </td>
+          </ng-container>
+          <!-- Coluna de Editar -->
+          <ng-container matColumnDef="Editar">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Editar</th>
+            <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarProcessadores">
+              <button class="btn btn-warning" (click)="abrirDialogEditarProcessador(i)"><mat-icon>update</mat-icon>Atualizar Processador {{elemento.id}}</button>
+            </td>
+          </ng-container>
+          <!-- Coluna de Excluir -->
+          <ng-container matColumnDef="Excluir">
+            <th mat-header-cell *matHeaderCellDef class="celulasTabelaListarProcessadores"> Excluir </th>
+            <td mat-cell *matCellDef="let elemento; let i = index;" class="celulasTabelaListarProcessadores">
+              <button class="btn btn-warning" (click)="abrirDialogExcluirProcessador(i)"><mat-icon>delete</mat-icon>Deletar Processador {{elemento.id}}</button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="colunasDisponiveis"></tr>
+          <tr mat-row *matRowDef="let row; columns: colunasDisponiveis;"></tr>
+        </table>
+        <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Selecione a página">
+        </mat-paginator>
+      </div>
+    </div>
+    <div *ngSwitchCase="botaoCRUDVetor[1].operacao">
+      <div class="tituloDaPagina"><h4>Criar Processador</h4><button class="botaoDeDuvida" (click)="abrirDialogoAjuda('Criar Processador')"><mat-icon>question_mark</mat-icon></button></div>
+      <div>
+        <button color="primary" type="submit" mat-raised-button id="button-entrar" (click)="atualizarAPagina()" *ngIf="botaoDeAtualizarAPagina">
+            <mat-icon>sync_alt</mat-icon>
+            <span>Atualizar a página</span>
+        </button>
+      </div>
+      <form [formGroup]="formularioCriarProcessador" (ngSubmit)="criarProcessador()">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome do Processador</label>
+          <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" required>
+        </div>
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca do Processador</label>
+          <input type="text" class="form-control" id="marca" name="marca" formControlName="marca" required>
+        </div>
+        <div class="mb-3">
+          <label for="preco" class="form-label">Preco do Processador</label>
+          <input type="number" class="form-control" id="preco" name="preco" formControlName="preco" required>
+        </div>
+        <div class="mb-3">
+          <label for="qtd_nucleos" class="form-label">Quantidade de Núcleos do Processador</label>
+          <input type="number" class="form-control" id="qtd_nucleos" name="qtd_nucleos" formControlName="qtd_nucleos" required>
+        </div>
+        <div class="mb-3">
+          <label for="qtd_threads" class="form-label">Quantidade de Threads do Processador</label>
+          <input type="number" class="form-control" id="qtd_threads" name="qtd_threads" formControlName="qtd_threads" required>
+        </div>
+        <button class="btn btn-warning" type="submit" [disabled]="botaoDesabilitadoCriarProcessador"><mat-icon>add_circle</mat-icon>Criar Processador</button>
+      </form>
+    </div>
+  </div>
+</div>
